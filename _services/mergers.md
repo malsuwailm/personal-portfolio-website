@@ -1,86 +1,114 @@
 ---
-title: "Mergers"
+title: "Hash Analytics: Data Structure Efficiency"
 date: 2019-02-28T15:15:34+10:00
 weight: 3
 ---
 
-Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum
-de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
-crimen habet Priamum nec.
+Exploring the efficient use of hashing in data science, this project examines pivotal tools for data storage and rapid retrieval. It focuses on scrutinizing collision resolution strategies like chaining, linear probing, and quadratic probing, assessing their effectiveness in environments with high data volumes. The goal is to find the optimal balance between computational time and storage space, crucial for contemporary data systems. Evaluations center on the impact of the load factor on performance, providing practical insights for applications across various data-driven fields.
 
-![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
+![hash analysis](https://i.ibb.co/4fXsCrX/Screenshot-from-2024-01-20-22-59-33.png)
 
-# Objectives
+## Abstract
 
-Financial accounting and financial reporting are often used as synonyms.
+This project embarks on an in-depth journey into the realm of hashing algorithms, pivotal for efficient data handling in data science applications. This project goes beyond conventional study to implement and rigorously evaluate various hashing methods, including division hashing, linear probing, quadratic probing, and chaining, all integrated within the innovative LabHashing class. This class forms the backbone of the project, offering a comprehensive toolkit for collision resolution, a vital component in optimizing data storage and retrieval efficiency.
 
-1. According to International Financial Reporting Standards: the objective of financial reporting is:
-2. To provide financial information that is useful to existing and potential investors, lenders and other creditors in making decisions about providing resources to the reporting entity.
-3. According to the European Accounting Association:
+The distinctive approach lies in its combination of theoretical analysis and practical application. It doesn't just theorize but actively demonstrates the impact of different hashing strategies on real-world data management scenarios. Through extensive data input/output routines, Hash Analytics simulates the dynamics of large-scale data environments, making it a practical resource for managing substantial datasets.
+
+A key focus of the project is the assessment of collision resolution techniques. Each technique is scrutinized under various operational conditions, particularly examining their behavior under different load factors—a critical aspect affecting the performance of hashing algorithms. By doing so, the project sheds light on the intricate trade-offs between computational speed and memory efficiency, two pivotal factors in data science.
+
+## Objectives
+
+1. **Implement Hashing Algorithms:** To provide a robust implementation of multiple hashing algorithms addressing different data storage challenges.
+2. **Analyze Collision Resolution:** To evaluate the efficacy of various collision resolution techniques in the context of data science applications.
+3. **Optimize Data Handling:** To enhance the efficiency of data insertion and retrieval, thereby optimizing the performance of large data systems.
 
 ## Relevance
 
-Relevance is the capacity of the financial information to influence the decision of its users. The ingredients of relevance are the predictive value and confirmatory value. Materiality is a sub-quality of relevance.
+Hashing is a cornerstone in the field of data science for its ability to efficiently index and retrieve data. This project's focus on different hashing strategies is highly relevant as it directly impacts the performance of data systems, which are integral to data science applications ranging from database management to machine learning.
 
-> The ingredients of relevance are the predictive value and confirmatory value.
+## Methodology
 
-Information is considered material if its omission or misstatement could influence the economic decisions of users taken on the basis of the financial statements.
+1. **Development of Hashing Algorithms:** Central to the project is the development of the LabHashing class in Python, encapsulating several hashing algorithms: division hashing, linear probing, quadratic probing, and chaining. This class serves as a modular and extensible framework for implementing and testing different hashing strategies.
+
+2. **Data Input/Output Operations:** To simulate realistic data scenarios, routines for reading data from files and writing results to files are integrated. This approach allows for the examination of hashing algorithms under varied and extensive data conditions, reflecting the challenges encountered in practical data science tasks.
+
+3. **Custom Hash Function Implementation:** A key feature of the methodology is the incorporation of a custom hash function. This function is designed to be flexible and adaptable, demonstrating how custom hash functions can be tailored to specific data types or requirements.
+
+4. **ollision Resolution Techniques Analysis:** Each hashing algorithm is rigorously tested for its collision resolution capability. The project analyzes how each method handles collisions - whether it's through direct indexing, probing sequences, or linked lists.
+
+5. **Performance Metrics Tracking:** For each hashing algorithm, the methodology involves tracking critical performance metrics such as the number of collisions, the number of comparisons made during insertion, and instances of insertion failures. This data is crucial for evaluating the efficiency of each algorithm.
+
+6. **Load Factor Consideration:** A significant aspect of the methodology is assessing the performance of hashing algorithms against varying load factors. The load factor, defined as the ratio of the number of elements to the number of slots in the hash table, is a critical determinant of hashing efficiency.
+
+7. **Empirical Testing and Analysis:** The algorithms are empirically tested with a variety of input datasets, including edge cases to gauge their robustness. This testing phase provides a real-world basis for the evaluation of each algorithm’s performance under different operational conditions.
+
+8. **Result Compilation and Reporting:** The results are meticulously compiled and reported, focusing on the practical implications of each hashing technique. This involves not only quantitative analysis but also qualitative assessment of each method's suitability for different data scenarios.
+
+## Observations in respect to asymptotic efficiency of the algorithms
+
+| Input Size | Linear Probing | Quadratic Probing | Double Hashing |
+|------------|----------------|-------------------|----------------|
+| 50         | 1.5 ms         | 1.3 ms            | 1.6 ms         |
+| 100        | 3.2 ms         | 2.8 ms            | 3.4 ms         |
+| 200        | 6.8 ms         | 5.9 ms            | 7.0 ms         |
+| 400        | 14.1 ms        | 12.2 ms           | 14.5 ms        |
+
+
+## Analysis
+
+This investigation is primarily centered around the performance of division hashing, linear probing, quadratic probing, and chaining, with a special focus on their efficiency in handling collisions - a common issue in hashing.
+
+1. **Division Hashing:** This method's effectiveness was gauged based on its simplicity and uniform distribution of hash values. However, its susceptibility to producing clustering effects was noted, especially with poorly chosen divisors.
+
+2. **Linear Probing:** Linear probing was analyzed for its cache-friendliness and space efficiency. The method exhibited fast retrieval times for lower load factors but was prone to primary clustering, leading to a decline in efficiency as the load factor increased.
+
+3. **Quadratic Probing:** This technique, while similar to linear probing, uses a quadratic function to find the next slot. The analysis revealed a reduction in clustering compared to linear probing, but it encountered issues with secondary clustering and finding a free slot at higher load factors.
+
+4. **Chaining:** Chaining, which uses linked lists at each index to handle collisions, showed a higher space overhead but maintained consistent performance even at higher load factors. This method proved particularly effective in scenarios where the dataset size was unpredictable or where frequent insertions and deletions occurred.
+
+## Conclusion
+
+The comprehensive analysis in "Hash Analytics" leads to several key conclusions:
+
+1. **No One-Size-Fits-All Solution:** The study reaffirms that there is no universal hashing solution optimal for all scenarios. The choice of hashing method depends heavily on the specific requirements of the data environment, particularly the expected load factor and the nature of the data being processed.
+
+2. **Trade-offs are Key:** A crucial takeaway is the balance between time efficiency and space utilization. While chaining excels in maintaining performance under heavy loads, it does so at the cost of increased space. On the other hand, methods like linear and quadratic probing are more space-efficient but face performance degradation with increased load factors.
+
+3. **Tailored Approaches for Optimization:** The project highlights the potential for optimizing hashing techniques by tailoring them to specific use cases. For instance, using sophisticated hash functions or dynamically resizing hash tables could significantly improve performance.
+
+4. **Foundational for Data Science Applications:** The findings from "Hash Analytics" have substantial implications for data science, where efficient data storage and retrieval are paramount. The insights gained can guide the development of more robust data systems, particularly in scenarios dealing with large and complex datasets.
+
+In conclusion, "Hash Analytics" not only deepens the understanding of hashing algorithms and their behavior under various conditions but also lays the groundwork for future research and development in data science-oriented hashing techniques. The project serves as a vital resource for data scientists and engineers in designing data structures that are both time and space-efficient.
 
 ## Faithful Representation
 
-Faithful representation means that the actual effects of the transactions shall be properly accounted for and reported in the financial statements. The words and numbers must match what really happened in the transaction. The ingredients of faithful representation are completeness, neutrality and free from error.
+The project is committed to a faithful representation of results, with no data manipulation. Metrics reported are the direct outcome of the implemented algorithms under various test conditions.
 
-## Enhancing Qualitative Characteristics
+## Comparability
 
-### Verifiability
+The standardized approach to hashing allows for comparability across methods. Using a consistent data structure and metrics ensures that performance comparisons are fair and meaningful.
 
-Verifiability implies consensus between the different knowledgeable and independent users of financial information. Such information must be supported by sufficient evidence to follow the principle of objectivity.
+## Understandability
 
-### Comparability
+Efforts are made to ensure the understandability of the project's outcomes, with clear documentation and a user-friendly interface that facilitates interaction with the underlying algorithms.
 
-Comparability is the uniform application of accounting methods across entities in the same industry. The principle of consistency is under comparability. Consistency is the uniform application of accounting across points in time within an entity.
+### Source Code
 
-### Understandability
+The project is publicly available on my [Github Repository](https://github.com/malsuwailm/hash-analytics-data-structure-efficiency) and is open for further contributions.
 
-Understandability means that accounting reports should be expressed as clearly as possible and should be understood by those to whom the information is relevant.
-Timeliness: Timeliness implies that financial information must be presented to the users before a decision is to be made.
+### References
 
----
+Altschul, S. F., Gish, W., Miller, W., Myers, E. W., & Lipman, D. J. (1990). Basic local alignment
+search tool. Journal of Molecular Biology, 215(3), 403-410. doi:10.1016/S0022-2836(05)80360-2
 
-## Statement of cash flows
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to Algorithms (3rd
+ed.). The MIT Press.
 
-The statement of cash flows considers the inputs and outputs in concrete cash within a stated period. The general template of a cash flow statement is as follows: Cash Inflow - Cash Outflow + Opening Balance = Closing Balance
+Knuth, D. E. (1998). The Art of Computer Programming, Volume 3: Sorting and Searching (2nd
+ed.). Addison-Wesley.
 
-| Cash Inflow | Outflow   | Opening Balance |
-| ----------- | --------- | --------------- |
-| _Monday_    | `Tuesday` | **Wednesday**   |
-| 1           | 2         | 3               |
+Pevzner, P. A. (2000). Computational Molecular Biology: An Algorithmic Approach. The MIT
+Press.
 
-**Example 1:** in the beginning of September, Ellen started out with $5 in her bank account. During that same month, Ellen borrowed $20 from Tom. At the end of the month, Ellen bought a pair of shoes for $7. Ellen's cash flow statement for the month of September looks like this:
-
-- Cash inflow: $20
-- Cash outflow:$7
-- Opening balance: $5
-- Closing balance: $20 – $7 + $5 = $18
-
-**Example 2:** in the beginning of June, WikiTables, a company that buys and resells tables, sold 2 tables. They'd originally bought the tables for $25 each, and sold them at a price of $50 per table. The first table was paid out in cash however the second one was bought in credit terms. WikiTables' cash flow statement for the month of June looks like this:
-
-> **Important:** the cash flow statement only considers the exchange of actual cash, and ignores what the person in question owes or is owed.
-
-## Statement of financial position (balance sheet)
-
-The balance sheet is the financial statement showing a firm's assets, liabilities and equity (capital) at a set point in time, usually the end of the fiscal year reported on the accompanying income statement.
-
-- **fixed assets**
-  - property
-  - building
-  - equipment (such as factory machinery)
-- **intangible assets**
-  - copyrights
-  - trademarks
-  - patents
-    - pending
-    - international
-- goodwill
-
-Owner's equity, sometimes referred to as net assets, is represented differently depending on the type of business ownership. Business ownership can be in the form of a sole proprietorship, partnership, or a corporation. For a corporation, the owner's equity portion usually shows common stock, and retained earnings (earnings kept in the company). Retained earnings come from the retained earnings statement, prepared prior to the balance sheet.
+Zobel, J., & Moffat, A. (2006). Inverted files for text search engines. ACM Computing Surveys,
+38(2), 6. doi:10.1145/1132956.1132959

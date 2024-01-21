@@ -7,6 +7,6 @@ intro_image_absolute: true
 intro_image_hide_on_mobile: false
 ---
 
-# Meet The Team
+# Publications
 
-Our team of qualified accountants and financial consultants can help your business at any stage of it's growth.
+Authorship of original scientific and scholarly articles with major contributions in the fields of data science, genomics and data-driven discovery.
